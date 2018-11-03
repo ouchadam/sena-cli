@@ -1,51 +1,72 @@
-## About 
-Novoda dashboards share 'at a glance' challenges and experiences of our globally distributed colleagues.
-Dashboards are viewed in two differents contexts: _Office_ & _Project_.
+## plugin-tester
 
-### Office: Informational, Operational, Cultural
-Transparency & community is at the heart of Novoda and our tools must reinforce our values. 
-[SMART](https://www.mindtools.com/pages/article/smart-goals.htm) Office screens should:
-* Promote our mission of togetherness on a journey of learning and growth
-* Link Novoda's digital & physical community
-* Ensure awareness of company ceremonies & process
-* Share achievements, challenges & goals
-* Share organic team building opportunities
+A `localhost` plugin tester by querying a local plugin and hosting the response on `localhost:5000` 
 
-### Project: Strategic, operational, analytical
-Sharing humanised, simplified and useful information is the best way our teams can be aligned to a project's goal. Our teams care about our contributions and their outcomes and so always want to share in an understanding of the metrics of success.
-[SMART](https://www.mindtools.com/pages/article/smart-goals.htm) team screens should:
-* Represent the team's overarching mission set by the PO
-* Share team specific roadmaps, challenges & goals
-* Ensure awareness of team specific ceremonies & processes
-* Share organic team building opportunities
-* Celebrate standout team contributions
+## Usage
 
+Install the plugin-tester as a global dependency.
 
-## Project Structure
+```bash
+npm install -g 
+```
 
-![dashboard-containers](docs/dashboard-containers.png)
+Bootstrap a new plugin
 
-[kiosk](https://github.com/novoda/dashboards/tree/master/kiosk)
+```bash
+plugin-tester init "awesome-plugin"
+```
 
-    A chrome app kiosk for use with `chromebit` or other chromeos devices 
-    to display the Dashboard Viewer site.
+Run a plugin
 
-[master-tick](https://github.com/novoda/dashboards/tree/master/master-tick)    
+```bash
+cd awesome-plugin
+npm install
+plugin-tester run
+```
 
-    App engine cron job for scheduling `ticks` to the Dashboard Server.
+## Options
 
-[plugin-tester](https://github.com/novoda/dashboards/tree/master/plugin-tester)
+```bash
+init <name>
+``` 
 
-    Node.js CLI tool to simplify the plugin development process.
-    
-[plugin](https://github.com/novoda/dashboards/tree/master/plugin)
+Bootstraps a new plugin with the given name.
 
-    A base plugin helper Node.js module. 
+```bash
+run <optional path>
+```
 
-[server](https://github.com/novoda/dashboards/tree/master/server)
+Runs the plugin in a local server at `localhost:5000|port`
 
-    A `firebase serverless` server written in Node.js   
-    
-[site](https://github.com/novoda/dashboards/tree/master/site) 
+The path is optional, if not supplied then the current directory is used. 
 
-    The `Admin` and `Viewer` websites written in javascript using react & redux. 
+```bash
+-p --port
+```
+
+The local server port, defaults to 5000. 
+
+```bash
+-w --watch
+```
+
+Enables watching the plugin module for changes and automatically requerying the plugin.
+
+```bash
+-c <path> --config
+```
+
+The path to a JSON configuration which will be used to query the plugin with. If the config path is not supplied the `plugin-tester` will attempt to find a `config.json` in the plugin directory.
+
+The JSON must be in the following format: 
+
+```JSON
+{
+    "first_name": {
+        "value": "James"
+    },
+    "last_name": {
+        "value": "Bond"
+    }
+} 
+```

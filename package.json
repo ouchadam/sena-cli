@@ -1,11 +1,11 @@
 {
-  "name": "plugin-tester",
+  "name": "sena-cli",
   "version": "0.0.1",
   "main": "src/index.js",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "bin": {
-    "plugin-tester": "src/index.js"
+    "sena": "src/index.js"
   },
   "scripts": {
     "start": "node src/index.js"
