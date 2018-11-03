@@ -1,19 +1,19 @@
-## plugin-tester
+## sena-cli
 
-A `localhost` plugin tester by querying a local plugin and hosting the response on `localhost:5000` 
+A `sena` plugin cli for local development and deployment.
 
 ## Usage
 
-Install the plugin-tester as a global dependency.
+Install sena-cli as a global dependency.
 
 ```bash
-npm install -g 
+npm install sena-cli -g 
 ```
 
 Bootstrap a new plugin
 
 ```bash
-plugin-tester init "awesome-plugin"
+sena init "awesome-plugin"
 ```
 
 Run a plugin
@@ -21,7 +21,7 @@ Run a plugin
 ```bash
 cd awesome-plugin
 npm install
-plugin-tester run
+sena run
 ```
 
 ## Options
@@ -56,7 +56,7 @@ Enables watching the plugin module for changes and automatically requerying the 
 -c <path> --config
 ```
 
-The path to a JSON configuration which will be used to query the plugin with. If the config path is not supplied the `plugin-tester` will attempt to find a `config.json` in the plugin directory.
+The path to a JSON configuration which will be used to query the plugin with. If the config path is not supplied `sena` will attempt to find a `config.json` in the plugin directory.
 
 The JSON must be in the following format: 
 
