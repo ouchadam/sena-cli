@@ -50,5 +50,4 @@ const createTemplate = (name, customPluginPath) => {
     console.log("Creating plugin... done");
 }
 
-
 module.exports.createTemplate = createTemplate

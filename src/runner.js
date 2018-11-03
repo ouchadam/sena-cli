@@ -1,4 +1,3 @@
-const http = require('request-promise-native')
 const decache = require('decache')
 
 const ignoredResponse = {
