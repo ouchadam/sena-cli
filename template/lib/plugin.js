@@ -18,4 +18,4 @@ const configuration = () => {
     }
 }
 
-module.exports = plugin.templated(configuration, component, generateViewState)
+module.exports = (dependencies) => plugin.templated(configuration, component, generateViewState)
