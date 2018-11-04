@@ -3,6 +3,7 @@
 const chokidar = require('chokidar');
 const Server = require('./server')
 const template = require('./template')
+const bundle = require('./bundle')
 const path = require('path')
 const fs = require('fs')
 const runnerCreator = require('./runner')
@@ -98,6 +99,13 @@ program.command('run [path]')
         } else {
             console.error(`Plugin ${pluginPath} not found.`)
         }
+    })
+
+program.command('bundle [path]')
+    .description('bundles the plugin ready for now.sh deployment')
+    .action((inputPath) => {
+        const pluginPath = inputPath ? path.resolve(inputPath) : process.cwd()
+        bundle(pluginPath)
     })
 
 program.parse(process.argv)
