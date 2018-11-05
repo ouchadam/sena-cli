@@ -9,16 +9,12 @@ module.exports = (pluginPath, additionalDependencies) => {
     tmpDir = tmp.dirSync({
         unsafeCleanup: true
     })
-    console.log(tmpDir)
-
     fs.mkdirSync(`${tmpDir.name}/plugin`)
 
-    const filter = (src, dest) => {
-        console.log(src, pluginPath)
+    console.log('copying plugin')
+    const filter = (src) => {
         return src === pluginPath || src.includes('lib')
     }
-
-    console.log('copying plugin')
     fs.copySync(pluginPath, `${tmpDir.name}/plugin`, { filter: filter })
 
     console.log('copying template')
