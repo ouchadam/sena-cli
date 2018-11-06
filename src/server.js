@@ -44,7 +44,7 @@ module.exports = class {
 
     start() {
         this.server.listen(this.port)
-        console.log(`Running local server http://localhost${port}`)
+        console.log(`Running local server http://localhost:${this.port}`)
     }
 
     updateHtml(html) {
